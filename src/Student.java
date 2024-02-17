@@ -17,6 +17,10 @@ public class Student {
         students.add(this);
     }
 
+    public void addCourse(Course course){
+        new CourseEnrollment(this, course);
+    }
+
     public int getId() {
         return id;
     }
