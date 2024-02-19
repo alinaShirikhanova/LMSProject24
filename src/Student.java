@@ -22,14 +22,14 @@ public class Student {
     }
 
     public void addMark(Student student, Course course, int mark, OffsetDateTime date){
-
+        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, course), mark, date);
     }
     public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
-
+        new Mark(courseEnrollment, mark, date);
     }
 
     public CourseEnrollment addCourse(Course course){
-        return CourseEnrollment.createCourseEnrollment(this, course);
+        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course);
     }
 
     public ArrayList<Course> getCourses(){

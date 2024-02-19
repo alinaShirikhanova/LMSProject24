@@ -18,10 +18,10 @@ public class Course {
 
 
     public CourseEnrollment addStudent(Student student){
-        return CourseEnrollment.createCourseEnrollment(student, this);
+        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this);
     }
     public ArrayList<Student> getStudents(){
-        return CourseEnrollment.getStudentByCourse(this);
+        return CourseEnrollment.getStudentsByCourse(this);
     }
 
     public int getId() {
