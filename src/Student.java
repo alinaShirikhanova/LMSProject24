@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,9 @@ public class Student {
     private int id;
     private static ArrayList<Student> students = new ArrayList<>();
 
+    private ArrayList<Mark> marks = new ArrayList<>();
+
+
 
     public Student(String name, String surname) {
         this.name = name;
@@ -17,8 +21,19 @@ public class Student {
         students.add(this);
     }
 
-    public void addCourse(Course course){
-        new CourseEnrollment(this, course);
+    public void addMark(Student student, Course course, int mark, OffsetDateTime date){
+
+    }
+    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
+
+    }
+
+    public CourseEnrollment addCourse(Course course){
+        return CourseEnrollment.createCourseEnrollment(this, course);
+    }
+
+    public ArrayList<Course> getCourses(){
+        return CourseEnrollment.getCourseByStudent(this);
     }
 
     public int getId() {
@@ -39,5 +54,10 @@ public class Student {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d. %s %s", id, name, surname);
     }
 }

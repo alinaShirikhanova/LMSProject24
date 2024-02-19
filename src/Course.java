@@ -16,6 +16,14 @@ public class Course {
         courses.add(this);
     }
 
+
+    public CourseEnrollment addStudent(Student student){
+        return CourseEnrollment.createCourseEnrollment(student, this);
+    }
+    public ArrayList<Student> getStudents(){
+        return CourseEnrollment.getStudentByCourse(this);
+    }
+
     public int getId() {
         return id;
     }
@@ -34,5 +42,10 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d. %s %s", id, title, description);
     }
 }
