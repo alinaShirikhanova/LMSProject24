@@ -15,6 +15,7 @@ public class Mark {
         this.mark = mark;
     }
 
+
     public CourseEnrollment getCourseEnrollment() {
         return courseEnrollment;
     }

@@ -17,13 +17,13 @@ public class CourseEnrollment {
 
 //    public static ArrayList<Course> getCoursesByStudent()
 
-    public static CourseEnrollment createCourseEnrollment(Student student, Course course){
-        CourseEnrollment courseEnrollment = getCourseEnrollmentByStudentAndCourse(student, course);
-        if (courseEnrollment != null){
-            return courseEnrollment;
-        }
-        return new CourseEnrollment(student, course);
-    }
+//    public static CourseEnrollment createCourseEnrollment(Student student, Course course){
+//        CourseEnrollment courseEnrollment = getCourseEnrollmentByStudentAndCourse(student, course);
+//        if (courseEnrollment != null){
+//            return courseEnrollment;
+//        }
+//        return new CourseEnrollment(student, course);
+//    }
 
 
     public static ArrayList<Course> getCourseByStudent(Student student) {
@@ -37,7 +37,7 @@ public class CourseEnrollment {
     }
 
 
-    public static ArrayList<Student> getStudentByCourse(Course course) {
+    public static ArrayList<Student> getStudentsByCourse(Course course) {
         ArrayList <Student> students = new ArrayList<>();
         for (CourseEnrollment courseEnrollment : list){
             if (courseEnrollment.course.getId() == course.getId()){
@@ -53,8 +53,7 @@ public class CourseEnrollment {
                 return courseEnrollment;
             }
         }
-        return null;
-
+        return new CourseEnrollment(student, course);
     }
 
     public int getId() {
