@@ -10,9 +10,12 @@ public class Student {
     private int id;
     private static ArrayList<Student> students = new ArrayList<>();
 
-    private ArrayList<Mark> marks = new ArrayList<>();
+//    private ArrayList<Mark> marks = new ArrayList<>();
 
 
+//    public ArrayList<Mark> getMarks() {
+//        return marks;
+//    }
 
     public Student(String name, String surname) {
         this.name = name;
@@ -21,8 +24,10 @@ public class Student {
         students.add(this);
     }
 
-    public void addMark(Student student, Course course, int mark, OffsetDateTime date){
-        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, course), mark, date);
+
+
+    public void addMark(Course course, int mark, OffsetDateTime date){
+        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course), mark, date);
     }
     public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
         new Mark(courseEnrollment, mark, date);

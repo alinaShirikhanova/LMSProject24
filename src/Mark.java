@@ -5,6 +5,7 @@ public class Mark {
     private static int lastId = 0;
     private CourseEnrollment courseEnrollment;
     private int mark;
+    private Student student;
     private OffsetDateTime date;
 
 
@@ -12,9 +13,17 @@ public class Mark {
         this.id = lastId++;
         this.date = date;
         this.courseEnrollment = courseEnrollment;
+        this.student = courseEnrollment.getStudent();
         this.mark = mark;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public CourseEnrollment getCourseEnrollment() {
         return courseEnrollment;
