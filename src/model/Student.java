@@ -1,7 +1,7 @@
-import java.lang.reflect.Array;
+package model;
+
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Student {
     private String name;
@@ -10,17 +10,20 @@ public class Student {
     private int id;
     private static ArrayList<Student> students = new ArrayList<>();
 
-//    private ArrayList<Mark> marks = new ArrayList<>();
+    public static ArrayList<Student> getStudents() {
+        return students;
+    }
+//    private ArrayList<model.Mark> marks = new ArrayList<>();
 
 
-//    public ArrayList<Mark> getMarks() {
+//    public ArrayList<model.Mark> getMarks() {
 //        return marks;
 //    }
 
-    public Student(String name, String surname) {
+    public Student(int id, String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.id = lastId++;
+        this.id = id;
         students.add(this);
     }
 

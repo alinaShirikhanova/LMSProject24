@@ -1,3 +1,7 @@
+package model;
+
+import model.CourseEnrollment;
+
 import java.time.OffsetDateTime;
 
 public class Mark {
