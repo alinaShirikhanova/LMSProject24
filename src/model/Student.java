@@ -8,11 +8,9 @@ public class Student {
     private String surname;
     private static int lastId = 0;
     private int id;
-    private static ArrayList<Student> students = new ArrayList<>();
 
-    public static ArrayList<Student> getStudents() {
-        return students;
-    }
+
+
 //    private ArrayList<model.Mark> marks = new ArrayList<>();
 
 
@@ -24,7 +22,7 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.id = id;
-        students.add(this);
+
     }
 
 

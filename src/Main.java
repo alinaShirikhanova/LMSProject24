@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 public class Main {
     public static void main(String[] args) {
         StudentRepository.getStudents();
-        System.out.println(Student.getStudents());
+        StudentRepository.createStudent("Владимир", "Пупкин");
+        StudentRepository.getStudents();
     }
 }
