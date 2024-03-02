@@ -1,28 +1,34 @@
-import java.lang.reflect.Array;
+package model;
+
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Student {
     private String name;
     private String surname;
     private static int lastId = 0;
     private int id;
-    private static ArrayList<Student> students = new ArrayList<>();
-
-    private ArrayList<Mark> marks = new ArrayList<>();
 
 
 
-    public Student(String name, String surname) {
+//    private ArrayList<model.Mark> marks = new ArrayList<>();
+
+
+//    public ArrayList<model.Mark> getMarks() {
+//        return marks;
+//    }
+
+    public Student(int id, String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.id = lastId++;
-        students.add(this);
+        this.id = id;
+
     }
 
-    public void addMark(Student student, Course course, int mark, OffsetDateTime date){
-        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, course), mark, date);
+
+
+    public void addMark(Course course, int mark, OffsetDateTime date){
+        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course), mark, date);
     }
     public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
         new Mark(courseEnrollment, mark, date);

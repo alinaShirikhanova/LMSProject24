@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class CourseEnrollment {
@@ -15,14 +17,14 @@ public class CourseEnrollment {
         list.add(this);
     }
 
-//    public static ArrayList<Course> getCoursesByStudent()
+//    public static ArrayList<model.Course> getCoursesByStudent()
 
-//    public static CourseEnrollment createCourseEnrollment(Student student, Course course){
-//        CourseEnrollment courseEnrollment = getCourseEnrollmentByStudentAndCourse(student, course);
+//    public static model.CourseEnrollment createCourseEnrollment(model.Student student, model.Course course){
+//        model.CourseEnrollment courseEnrollment = getCourseEnrollmentByStudentAndCourse(student, course);
 //        if (courseEnrollment != null){
 //            return courseEnrollment;
 //        }
-//        return new CourseEnrollment(student, course);
+//        return new model.CourseEnrollment(student, course);
 //    }
 
 
@@ -83,7 +85,7 @@ public class CourseEnrollment {
 
     @Override
     public String toString() {
-        return "CourseEnrollment{" +
+        return "model.CourseEnrollment{" +
                 "id=" + id +
                 ", student=" + student +
                 ", course=" + course +

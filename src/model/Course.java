@@ -1,5 +1,7 @@
+package model;
+
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Course {
     private String title;
@@ -9,18 +11,24 @@ public class Course {
     private static ArrayList<Course> courses = new ArrayList<>();
 
 
-    public Course(String title,  String description) {
+    public Course(String title, String description) {
         this.title = title;
         this.description = description;
         this.id = lastId++;
         courses.add(this);
     }
 
-
-    public CourseEnrollment addStudent(Student student){
+    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
+        new Mark(courseEnrollment, mark, date);
+    }
+    public void addMark(Student student, int mark, OffsetDateTime date){
+        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this), mark, date);
+    }
+    public CourseEnrollment addStudent(Student student) {
         return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this);
     }
-    public ArrayList<Student> getStudents(){
+
+    public ArrayList<Student> getStudents() {
         return CourseEnrollment.getStudentsByCourse(this);
     }
 
