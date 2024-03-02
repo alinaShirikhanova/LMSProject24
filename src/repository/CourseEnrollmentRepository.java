@@ -36,6 +36,51 @@ public class CourseEnrollmentRepository {
         return enrollments;
     }
 
+//    public static ArrayList<Course> getCoursesByStudent(int student_id){
+//        ArrayList<Course> courses = new ArrayList<>();
+//
+//        try {
+//            Connection connection = DriverManager.getConnection(url, login, password);
+//            PreparedStatement statement = connection.prepareStatement("SELECT * FROM enrollments WHERE student_id=?");
+//
+//            statement.setInt(1, student_id);
+//            ResultSet resultSet = statement.executeQuery();
+//
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                int courseId = resultSet.getInt("course_id");
+//
+//            }
+//            connection.close();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return enrollments;
+//    }
+
+    public static ArrayList<Course> getCoursesByStudentId(int student_id){
+        ArrayList<Course> courses = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM enrollments WHERE student_id=?");
+
+            statement.setInt(1, student_id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int courseId = resultSet.getInt("course_id");
+                Course course = CourseRepository.getCourseById(courseId);
+                courses.add(course);
+
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return courses;
+    }
+
     public static void createCourseEnrollment( int studentId, int courseId) {
         try {
             Connection connection = DriverManager.getConnection(url, login, password);
@@ -52,5 +97,24 @@ public class CourseEnrollmentRepository {
         }
     }
 
+    public static ArrayList<Student> getStudentsByCourseId(int course_id){
+        ArrayList<Student> students = new ArrayList<>();
 
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM enrollments WHERE course_id=?");
+            statement.setInt(1, course_id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int st_id = resultSet.getInt("student_id");
+                Student student = StudentRepository.getStudentById(st_id);
+                students.add(student);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return students;
+    }
 }

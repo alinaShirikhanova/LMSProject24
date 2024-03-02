@@ -29,25 +29,13 @@ public class CourseEnrollment {
 //    }
 
 
-    public static ArrayList<Course> getCourseByStudent(Student student) {
-        ArrayList<Course> courses = new ArrayList<>() ;
-        for (CourseEnrollment courseEnrollment : list){
-            if (courseEnrollment.student.getId() == student.getId()){
-                courses.add(courseEnrollment.course);
-            }
-        }
-        return courses;
+    public static ArrayList<Course> getCoursesByStudent(int student_id) {
+        return CourseEnrollmentRepository.getCoursesByStudentId(student_id);
     }
 
 
-    public static ArrayList<Student> getStudentsByCourse(Course course) {
-        ArrayList <Student> students = new ArrayList<>();
-        for (CourseEnrollment courseEnrollment : list){
-            if (courseEnrollment.course.getId() == course.getId()){
-                students.add(courseEnrollment.student);
-            }
-        }
-        return students;
+    public static ArrayList<Student> getStudentsByCourse(int course_id) {
+        return CourseEnrollmentRepository.getStudentsByCourseId(course_id);
     }
 //    public static CourseEnrollment getCourseEnrollmentByStudentAndCourse(Student student, Course course){
 //        for (CourseEnrollment courseEnrollment: list) {
@@ -83,10 +71,6 @@ public class CourseEnrollment {
 
     @Override
     public String toString() {
-        return "model.CourseEnrollment{" +
-                "id=" + id +
-                ", student=" + student +
-                ", course=" + course +
-                '}';
+        return String.format("Зачисление: %d%n Студент :%s%nКурс: %s%n", id, student, course);
     }
 }

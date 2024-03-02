@@ -1,4 +1,5 @@
 import model.Course;
+import model.CourseEnrollment;
 import model.Student;
 import repository.CourseEnrollmentRepository;
 import repository.StudentRepository;
@@ -7,13 +8,8 @@ import java.time.OffsetDateTime;
 
 public class Main {
     public static void main(String[] args) {
-//        StudentRepository.getStudents();
-//        StudentRepository.createStudent("Владимир", "Пупкин");
-//        System.out.println(StudentRepository.getStudents());
-//        StudentRepository.deleteStudent(1);
-//        System.out.println(StudentRepository.getStudents());
-        System.out.println(StudentRepository.getStudentById(5));
         System.out.println(CourseEnrollmentRepository.getCourseEnrollments());
+        System.out.println(CourseEnrollment.getCoursesByStudent(5));
+        System.out.println(CourseEnrollment.getStudentsByCourse(1));
     }
 }
-//Реализовать редактирование курса
