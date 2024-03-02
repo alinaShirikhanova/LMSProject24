@@ -81,6 +81,31 @@ public class CourseEnrollmentRepository {
         return courses;
     }
 
+    public static ArrayList<Course> getCourseEnrollmentByStudentAndCourse(int studentId, int courseId){
+        ArrayList<CourseEnrollment> enrollments = new ArrayList<>();
+
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM enrollments WHERE student_id=?, course_id=?");
+
+            statement.setInt(1, studentId);
+            statement.setInt(2, courseId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                Student student = StudentRepository.getStudentById(studentId);
+                Course course = CourseRepository.getCourseById(courseId);
+                enrollments.add(new CourseEnrollment(id, student, course));
+
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return courses;
+    }
+
     public static void createCourseEnrollment( int studentId, int courseId) {
         try {
             Connection connection = DriverManager.getConnection(url, login, password);
