@@ -14,7 +14,6 @@ public class Course {
         this.title = title;
         this.description = description;
         this.id = id;
-
     }
 
 //    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){

@@ -6,9 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class StudentRepository {
-    private static String url = "jdbc:postgresql://localhost:5432/postgres";
-    private static String login = "postgres";
-    private static String password = "123";
+    private static String url = Data.getUrl();
+    private static String login = Data.getLogin();
+    private static String password = Data.getPassword();
 
     public static Student getStudentById(int id){
         Student student = null;

@@ -31,7 +31,7 @@ public class CourseEnrollment {
 
     public static ArrayList<Course> getCourseByStudent(Student student) {
         ArrayList<Course> courses = new ArrayList<>() ;
-        for (CourseEnrollment courseEnrollment : CourseEnrollmentRepository.getCourseEnrollments()){
+        for (CourseEnrollment courseEnrollment : list){
             if (courseEnrollment.student.getId() == student.getId()){
                 courses.add(courseEnrollment.course);
             }
@@ -42,7 +42,7 @@ public class CourseEnrollment {
 
     public static ArrayList<Student> getStudentsByCourse(Course course) {
         ArrayList <Student> students = new ArrayList<>();
-        for (CourseEnrollment courseEnrollment : CourseEnrollmentRepository.getCourseEnrollments()){
+        for (CourseEnrollment courseEnrollment : list){
             if (courseEnrollment.course.getId() == course.getId()){
                 students.add(courseEnrollment.student);
             }
@@ -50,7 +50,7 @@ public class CourseEnrollment {
         return students;
     }
 //    public static CourseEnrollment getCourseEnrollmentByStudentAndCourse(Student student, Course course){
-//        for (CourseEnrollment courseEnrollment: CourseEnrollmentRepository.getCourseEnrollments()) {
+//        for (CourseEnrollment courseEnrollment: list) {
 //            if (courseEnrollment.student.getId() == student.getId()
 //                    && courseEnrollment.course.getId() == course.getId()){
 //                return courseEnrollment;

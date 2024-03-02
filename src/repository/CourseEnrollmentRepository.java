@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CourseEnrollmentRepository {
-    private static String url = "jdbc:postgresql://localhost:5432/postgres";
-    private static String login = "postgres";
-    private static String password = "123";
+    private static String url = Data.getUrl();
+    private static String login = Data.getLogin();
+    private static String password = Data.getPassword();
+
 
     public static ArrayList<CourseEnrollment> getCourseEnrollments () {
         ArrayList<CourseEnrollment> enrollments = new ArrayList<>();
@@ -26,7 +27,7 @@ public class CourseEnrollmentRepository {
                 int courseId = resultSet.getInt("course_id");
                 Student student = StudentRepository.getStudentById(studId);
                 Course course = CourseRepository.getCourseById(courseId);
-                enrollments.add(new CourseEnrollment(id, student, course));
+                enrollments.add(new CourseEnrollment(id,student, course));
             }
             connection.close();
         } catch (SQLException e) {
