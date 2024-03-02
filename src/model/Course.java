@@ -7,30 +7,29 @@ public class Course {
     private String title;
     private String description;
     private int id;
-    private static int lastId = 0;
-    private static ArrayList<Course> courses = new ArrayList<>();
 
 
-    public Course(String title, String description) {
+
+    public Course(int id, String title, String description) {
         this.title = title;
         this.description = description;
-        this.id = lastId++;
-        courses.add(this);
+        this.id = id;
+
     }
 
-    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
-        new Mark(courseEnrollment, mark, date);
-    }
-    public void addMark(Student student, int mark, OffsetDateTime date){
-        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this), mark, date);
-    }
-    public CourseEnrollment addStudent(Student student) {
-        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this);
-    }
+//    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
+//        new Mark(courseEnrollment, mark, date);
+//    }
+//    public void addMark(Student student, int mark, OffsetDateTime date){
+//        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this), mark, date);
+//    }
+//    public CourseEnrollment addStudent(Student student) {
+//        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(student, this);
+//    }
 
-    public ArrayList<Student> getStudents() {
-        return CourseEnrollment.getStudentsByCourse(this);
-    }
+//    public ArrayList<Student> getStudents() {
+//        return CourseEnrollment.getStudentsByCourse(this);
+//    }
 
     public int getId() {
         return id;

@@ -1,20 +1,21 @@
 package model;
 
+
+
+import repository.CourseEnrollmentRepository;
+
 import java.util.ArrayList;
 
 public class CourseEnrollment {
     private int id;
-    private static int lastId = 0;
     private Student student;
     private Course course;
 
-    private static ArrayList<CourseEnrollment> list = new ArrayList<>();
 
-    public CourseEnrollment(Student student, Course course) {
+    public CourseEnrollment(int id, Student student, Course course) {
         this.student = student;
         this.course = course;
-        this.id = lastId++;
-        list.add(this);
+        this.id = id;
     }
 
 //    public static ArrayList<model.Course> getCoursesByStudent()
@@ -30,7 +31,7 @@ public class CourseEnrollment {
 
     public static ArrayList<Course> getCourseByStudent(Student student) {
         ArrayList<Course> courses = new ArrayList<>() ;
-        for (CourseEnrollment courseEnrollment : list){
+        for (CourseEnrollment courseEnrollment : CourseEnrollmentRepository.getCourseEnrollments()){
             if (courseEnrollment.student.getId() == student.getId()){
                 courses.add(courseEnrollment.course);
             }
@@ -41,22 +42,22 @@ public class CourseEnrollment {
 
     public static ArrayList<Student> getStudentsByCourse(Course course) {
         ArrayList <Student> students = new ArrayList<>();
-        for (CourseEnrollment courseEnrollment : list){
+        for (CourseEnrollment courseEnrollment : CourseEnrollmentRepository.getCourseEnrollments()){
             if (courseEnrollment.course.getId() == course.getId()){
                 students.add(courseEnrollment.student);
             }
         }
         return students;
     }
-    public static CourseEnrollment getCourseEnrollmentByStudentAndCourse(Student student, Course course){
-        for (CourseEnrollment courseEnrollment: list) {
-            if (courseEnrollment.student.getId() == student.getId()
-                    && courseEnrollment.course.getId() == course.getId()){
-                return courseEnrollment;
-            }
-        }
-        return new CourseEnrollment(student, course);
-    }
+//    public static CourseEnrollment getCourseEnrollmentByStudentAndCourse(Student student, Course course){
+//        for (CourseEnrollment courseEnrollment: CourseEnrollmentRepository.getCourseEnrollments()) {
+//            if (courseEnrollment.student.getId() == student.getId()
+//                    && courseEnrollment.course.getId() == course.getId()){
+//                return courseEnrollment;
+//            }
+//        }
+//        return new CourseEnrollment(student, course);
+//    }
 
     public int getId() {
         return id;
@@ -79,9 +80,6 @@ public class CourseEnrollment {
         this.course = course;
     }
 
-    public static ArrayList<CourseEnrollment> getList() {
-        return list;
-    }
 
     @Override
     public String toString() {

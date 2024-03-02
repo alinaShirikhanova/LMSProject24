@@ -27,20 +27,20 @@ public class Student {
 
 
 
-    public void addMark(Course course, int mark, OffsetDateTime date){
-        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course), mark, date);
-    }
-    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
-        new Mark(courseEnrollment, mark, date);
-    }
+//    public void addMark(Course course, int mark, OffsetDateTime date){
+//        addMark(CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course), mark, date);
+//    }
+//    public void addMark(CourseEnrollment courseEnrollment, int mark, OffsetDateTime date){
+//        new Mark(courseEnrollment, mark, date);
+//    }
+//
+//    public CourseEnrollment addCourse(Course course){
+//        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course);
+//    }
 
-    public CourseEnrollment addCourse(Course course){
-        return CourseEnrollment.getCourseEnrollmentByStudentAndCourse(this, course);
-    }
-
-    public ArrayList<Course> getCourses(){
-        return CourseEnrollment.getCourseByStudent(this);
-    }
+//    public ArrayList<Course> getCourses(){
+//        return CourseEnrollment.getCourseByStudent(this);
+//    }
 
     public int getId() {
         return id;

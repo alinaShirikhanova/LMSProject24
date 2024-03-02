@@ -10,6 +10,26 @@ public class StudentRepository {
     private static String login = "postgres";
     private static String password = "123";
 
+    public static Student getStudentById(int id){
+        Student student = null;
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM students WHERE id=?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int st_id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String surname = resultSet.getString("surname");
+                student = new Student(st_id, name, surname);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return student;
+    }
+
 
     public static ArrayList<Student> getStudents (){
         ArrayList<Student> students = new ArrayList<>();
@@ -43,7 +63,41 @@ public class StudentRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
+    public static void editStudent(int id, String name, String surname) {
+        String query = "update students set name=?, surname=? where id=?";
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setString(1, name);
+            statement.setString(2, surname);
+            statement.setInt(3, id);
+            statement.executeUpdate();
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("Не удалось подключиться к базе данных");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void deleteStudent(int id) {
+        String query = "delete from students where id=?";
+        try {
+            Connection connection = DriverManager.getConnection(url, login, password);
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("Не удалось подключиться к базе данных");
+            System.out.println(e.getMessage());
+        }
+    }
 }
